@@ -2,7 +2,7 @@
   "name": "welcome-baby-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vikandagonzales/welcome-baby-backend.git"
