@@ -3,17 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/app.js",
-    "dev": "nodemon ./src/app.js",
-    "reboot": "knex migrate:rollback && knex migrate:latest && knex seed:run"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vikandagonzales/welcome-baby-backend.git"
   },
-  "keywords": [],
+  "keywords": [
+    "javascript",
+    "nodejs",
+    "expressjs",
+    "knexjs",
+    "sql",
+    "postgresql"
+  ],
   "author": "Vikanda Gonzales <vikanda.gonzales@gmail.com",
   "license": "MIT",
   "bugs": {
@@ -30,5 +31,11 @@
     "morgan": "^1.9.1",
     "nodemon": "^1.18.9",
     "pg": "^7.7.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/app.js",
+    "dev": "nodemon ./src/app.js",
+    "reboot": "knex migrate:rollback && knex migrate:latest && knex seed:run"
   }
 }
