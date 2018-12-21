@@ -15,7 +15,7 @@
     "sql",
     "postgresql"
   ],
-  "author": "Vikanda Gonzales <vikanda.gonzales@gmail.com",
+  "author": "Vikanda Gonzales <vikanda.gonzales@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/vikandagonzales/welcome-baby-backend/issues"
