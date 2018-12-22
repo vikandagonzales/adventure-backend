@@ -1,25 +1,28 @@
 const db = require('../../db');
+const groups = require('./groups');
 
-getAll = () => {
+const getAll = () => {
   return db('guests');
 };
 
-getOne = id => {
+const getOne = id => {
   return db('guests')
     .where({id: id})
     .first();
 };
 
-create = ({group_id, first_name, last_name}) => {
-  return db('guests')
-    .insert({group_id, first_name, last_name})
-    .returning('*')
-    .then(([data]) => {
-      return data;
-    });
+const create = async ({group_id, first_name, last_name}) => {
+  const guests = await getAll();
+  console.log(guests);
+  // return db('guests')
+  //   .insert({group_id, first_name, last_name})
+  //   .returning('*')
+  //   .then(([data]) => {
+  //     return data;
+  //   });
 };
 
-update = (id, {accepted}) => {
+const update = (id, {accepted}) => {
   return db('guests')
     .update({rsvp: true, accepted})
     .where({id: id})
@@ -29,7 +32,7 @@ update = (id, {accepted}) => {
     });
 };
 
-remove = id => {
+const remove = id => {
   return db('guests')
     .del()
     .where({id: id})

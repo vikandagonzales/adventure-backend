@@ -1,10 +1,10 @@
 const db = require('../../db');
 
-getAll = () => {
+const getAll = () => {
   return db('groups');
 };
 
-getOne = id => {
+const getOne = id => {
   return db('groups')
     .where({id: id})
     .first();
