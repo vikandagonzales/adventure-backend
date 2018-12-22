@@ -10,9 +10,9 @@ getOne = id => {
     .first();
 };
 
-create = ({first_name, last_name}) => {
+create = ({group_id, first_name, last_name}) => {
   return db('guests')
-    .insert({first_name, last_name})
+    .insert({group_id, first_name, last_name})
     .returning('*')
     .then(([data]) => {
       return data;

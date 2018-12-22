@@ -19,21 +19,19 @@ app.use('/guests', require('./routes/guests'));
 
 // DEFAULT ROUTE
 app.use((req, res, next) => {
-  next({status: 404, message: 'Route not found'});
+  return next({status: 404, message: 'Route not found'});
 });
 
 // ERROR HANDLING
 app.use((err, req, res, next) => {
   const errorMessage = {};
-  if (process.env.NODE_ENV !== 'production' && err.stack) {
-    errorMessage.stack = err.stack;
-    errorMessage.status = err.status || 500;
-    errorMessage.message = err.message || 'Internal Server Error';
-    res.status(errorMessage.status).send(errorMessage);
-  }
+  if (process.env.NODE_ENV !== 'production' && err.stack) errorMessage.stack = err.stack;
+  errorMessage.status = err.status || 500;
+  errorMessage.message = err.message || 'Internal Server Error';
+  return res.status(errorMessage.status).send(errorMessage);
 });
 
 // SERVER
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+  console.log(`Listening on port ${port} 🐽!`);
 });
