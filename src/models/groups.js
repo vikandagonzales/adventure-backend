@@ -20,8 +20,11 @@ const create = ({name, limit}) => {
 };
 
 const update = (id, {name, limit}) => {
+  const updated = {};
+  name ? updated.name = name : null;
+  limit ? updated.limit = limit : null;
   return db('groups')
-    .update({name, limit})
+    .update(updated)
     .where({id: id})
     .returning('*')
     .then(([data]) => {

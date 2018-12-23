@@ -27,9 +27,14 @@ const create = async ({group_id, first_name, last_name}) => {
   }
 };
 
-const update = (id, {accepted}) => {
+const update = (id, {first_name, last_name, rsvp, accepted}) => {
+  const updated = {};
+  first_name ? updated.first_name = first_name : null;
+  last_name ? updated.last_name = last_name : null;
+  rsvp ? updated.rsvp = rsvp : updated.rsvp = true;
+  accepted ? updated.accepted = accepted : null;
   return db('guests')
-    .update({rsvp: true, accepted})
+    .update(updated)
     .where({id: id})
     .returning('*')
     .then(([data]) => {
