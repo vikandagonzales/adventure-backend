@@ -14,6 +14,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 // USER ROUTES
+app.use('/auth', require('./routes/auth'));
 app.use('/groups', require('./routes/groups'));
 app.use('/guests', require('./routes/guests'));
 

@@ -11,6 +11,12 @@ const getOne = id => {
     .first();
 };
 
+const getOneByName = (first_name, last_name) => {
+  return db('guests')
+    .where({first_name: first_name, last_name: last_name})
+    .first();
+};
+
 const create = async ({group_id, first_name, last_name}) => {
   const allGuests = await getAll();
   const guests = await allGuests.filter(guest => guest.group_id == group_id);
@@ -56,6 +62,7 @@ const remove = id => {
 module.exports = {
   getAll,
   getOne,
+  getOneByName,
   create,
   update,
   remove
