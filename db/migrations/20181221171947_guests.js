@@ -6,6 +6,7 @@ exports.up = (knex, Promise) => {
     table.integer('group_id').notNullable().references('groups.id');
     table.string('first_name').notNullable();
     table.string('last_name').notNullable();
+    table.boolean('plus_one').defaultsTo(false);
     table.boolean('rsvp').defaultsTo(false);
     table.boolean('accepted').defaultsTo(null);
     table.boolean('admin').defaultsTo(false);
