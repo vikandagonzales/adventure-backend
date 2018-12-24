@@ -7,7 +7,15 @@ const getAll = () => {
 const getOne = id => {
   return db('groups')
     .where({id: id})
-    .first();
+    .first()
+    .then(group => {
+      return db('guests')
+        .where({group_id: group.id})
+        .then(guests => {
+          group.guests = guests;
+          return group;
+        });
+    });
 };
 
 const create = ({name, limit}) => {

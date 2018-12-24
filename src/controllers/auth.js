@@ -3,10 +3,9 @@ const model = require('../models/auth');
 
 const login = (req, res, next) => {
   if (!req.body.first_name || !req.body.last_name) return next({status: 400, message: 'Missing information'});
-  console.log('in controller now')
   model.login(req.body)
-    .then(({first_name, last_name}) => {
-      const token = jwt.sign({first_name, last_name}, process.env.SECRET);
+    .then(({first_name, last_name, group_id}) => {
+      const token = jwt.sign({first_name, last_name, group_id}, process.env.SECRET);
       return res.status(200).send({token});
     })
     .catch(next);
