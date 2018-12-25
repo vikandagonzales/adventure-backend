@@ -4,8 +4,8 @@ const model = require('../models/auth');
 const login = (req, res, next) => {
   if (!req.body.first_name || !req.body.last_name) return next({status: 400, message: 'Missing information'});
   model.login(req.body)
-    .then(({first_name, last_name, group_id}) => {
-      const token = jwt.sign({first_name, last_name, group_id}, process.env.SECRET);
+    .then(({id, first_name, last_name, group_id}) => {
+      const token = jwt.sign({id, first_name, last_name, group_id}, process.env.SECRET);
       return res.status(200).send({token});
     })
     .catch(next);
@@ -21,6 +21,15 @@ const isAuthenticated = (req, res, next) => {
   });
 };
 
+const updateSelf = (req, res, next) => {
+  model.updateSelf(req.claim.id)
+    .then(self => {
+      req.claim.first_name = self.first_name;
+      req.claim.last_name = self.last_name;
+      next();
+    });
+};
+
 const getAuthStatus = (req, res, next) => {
   return res.status(200).send({...req.claim});
 }
@@ -28,5 +37,6 @@ const getAuthStatus = (req, res, next) => {
 module.exports = {
   login,
   isAuthenticated,
+  updateSelf,
   getAuthStatus
 };

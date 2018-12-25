@@ -10,6 +10,11 @@ const login = ({first_name, last_name}) => {
     });
 };
 
+const updateSelf = id => {
+  return guestsModel.getOne(id);
+};
+
 module.exports = {
-  login
+  login,
+  updateSelf
 };

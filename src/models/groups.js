@@ -10,6 +10,7 @@ const getOne = id => {
     .first()
     .then(group => {
       return db('guests')
+        .orderBy('id', 'asc')
         .where({group_id: group.id})
         .then(guests => {
           group.guests = guests;
