@@ -23,7 +23,7 @@ const create = (req, res, next) => {
 };
 
 const update = (req, res, next) => {
-  if (!req.body.first_name && !req.body.last_name && !req.body.accepted) return next({status: 400, message: 'No changes to make'});
+  if (!req.body.first_name && !req.body.last_name && req.body.accepted === null) return next({status: 400, message: 'No changes to make'});
   model.update(parseInt(req.params.id), req.body)
     .then(data => res.status(200).send({data}))
     .catch(next);

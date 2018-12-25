@@ -37,9 +37,9 @@ const update = (id, {first_name, last_name, rsvp, accepted, plus_one}) => {
   const updated = {};
   first_name ? updated.first_name = first_name : null;
   last_name ? updated.last_name = last_name : null;
-  rsvp || accepted === false ? updated.rsvp = rsvp : updated.rsvp = true;
+  rsvp || rsvp === false ? updated.rsvp = rsvp : updated.rsvp = true;
   accepted || accepted === false ? updated.accepted = accepted : null;
-  plus_one || plus_one === false ? updated.accepted = accepted : null;
+  plus_one || plus_one === false ? updated.plus_one = plus_one : null;
   return db('guests')
     .update(updated)
     .where({id: id})
