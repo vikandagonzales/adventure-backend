@@ -1,7 +1,20 @@
 const db = require('../../db');
 
 const getAll = () => {
-  return db('groups');
+  return db('groups')
+    .orderBy('id', 'asc')
+    .then(groups => {
+      const promises = groups.map(group => {
+        return db('guests')
+          .orderBy('id', 'asc')
+          .where({group_id: group.id})
+          .then(guests => {
+            group.guests = guests;
+            return group;
+          });
+      });
+      return Promise.all(promises);
+    });
 };
 
 const getOne = id => {
