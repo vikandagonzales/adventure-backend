@@ -19,9 +19,10 @@ const getOneByName = (first_name, last_name) => {
 
 const create = async ({group_id, first_name, last_name, plus_one}) => {
   const allGuests = await getAll();
+  const duplicate = await allGuests.find(guest => guest.first_name === first_name && guest.last_name === last_name);
   const guests = await allGuests.filter(guest => guest.group_id == group_id);
   const group = await groupsModel.getOne(group_id);
-  if (guests.length < group.limit) {
+  if (guests.length < group.limit && !duplicate) {
     return db('guests')
       .insert({group_id, first_name, last_name, plus_one})
       .returning('*')
