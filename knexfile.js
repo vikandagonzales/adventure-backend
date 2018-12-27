@@ -1,6 +1,6 @@
 const path = require('path');
 
-const DB_NAME = 'welcome_baby';
+const DB_NAME = 'adventure';
 
 module.exports = {
 

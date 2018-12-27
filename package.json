@@ -1,11 +1,11 @@
 {
-  "name": "welcome-baby-backend",
+  "name": "adventure-backend",
   "version": "1.0.0",
-  "description": "Back-end for https://github.com/vikandagonzales/welcome-baby",
+  "description": "Back-end for https://github.com/vikandagonzales/adventure",
   "main": "./src/app.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vikandagonzales/welcome-baby-backend.git"
+    "url": "git+https://github.com/vikandagonzales/adventure-backend.git"
   },
   "keywords": [
     "javascript",
@@ -18,9 +18,9 @@
   "author": "Vikanda Gonzales <vikanda.gonzales@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vikandagonzales/welcome-baby-backend/issues"
+    "url": "https://github.com/vikandagonzales/adventure-backend/issues"
   },
-  "homepage": "https://github.com/vikandagonzales/welcome-baby-backend#readme",
+  "homepage": "https://github.com/vikandagonzales/adventure-backend#readme",
   "dependencies": {
     "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
