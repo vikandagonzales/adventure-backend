@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 app.use('/auth', require('./routes/auth'));
 app.use('/groups', require('./routes/groups'));
 app.use('/guests', require('./routes/guests'));
+app.use('/details', require('./routes/details'));
 
 // DEFAULT ROUTE
 app.use((req, res, next) => {
