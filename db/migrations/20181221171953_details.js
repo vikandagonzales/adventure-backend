@@ -6,11 +6,14 @@ exports.up = (knex, Promise) => {
     table.string('mother').notNullable();
     table.string('father').notNullable();
     table.string('host').notNullable();
+    table.string('host_contact').notNullable();
     table.string('date').notNullable();
     table.string('time').notNullable();
     table.string('location').notNullable();
+    table.text('map').notNullable();
     table.string('registry').notNullable();
-    table.string('registry_link').notNullable();
+    table.text('registry_link').notNullable();
+    table.string('rsvp_date').notNullable();
   });
 };
 
