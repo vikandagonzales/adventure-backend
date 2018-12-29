@@ -18,6 +18,7 @@ app.use('/auth', require('./routes/auth'));
 app.use('/groups', require('./routes/groups'));
 app.use('/guests', require('./routes/guests'));
 app.use('/details', require('./routes/details'));
+app.use('/registries', require('./routes/registries'));
 
 // DEFAULT ROUTE
 app.use((req, res, next) => {
