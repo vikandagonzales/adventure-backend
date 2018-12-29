@@ -11,8 +11,6 @@ exports.up = (knex, Promise) => {
     table.string('time').notNullable();
     table.string('location').notNullable();
     table.text('map').notNullable();
-    table.string('registry').notNullable();
-    table.text('registry_link').notNullable();
     table.string('rsvp_date').notNullable();
   });
 };
