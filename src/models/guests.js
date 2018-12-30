@@ -22,19 +22,20 @@ const create = async ({group_id, first_name, last_name, plus_one}) => {
   const duplicate = await allGuests.find(guest => guest.first_name === first_name && guest.last_name === last_name);
   const guests = await allGuests.filter(guest => guest.group_id == group_id);
   const group = await groupsModel.getOne(group_id);
-  if (guests.length < group.limit && !duplicate) {
-    return db('guests')
-      .insert({group_id, first_name, last_name, plus_one})
-      .returning('*')
-      .then(([data]) => {
-        return data;
-      });
-  } else {
-    throw {status: 400, message: 'Limit for group exceeded'};
-  }
+  if (guests.length >= group.limit) throw {status: 400, message: 'Limit for group exceeded'};
+  if (duplicate) throw {status: 400, message: 'Guest already exists'};
+  return db('guests')
+    .insert({group_id, first_name, last_name, plus_one})
+    .returning('*')
+    .then(([data]) => {
+      return data;
+    });
 };
 
-const update = (id, {first_name, last_name, rsvp, accepted, plus_one}) => {
+const update = async (id, {first_name, last_name, rsvp, accepted, plus_one}) => {
+  const allGuests = await getAll();
+  const duplicate = await allGuests.find(guest => guest.first_name === first_name && guest.last_name === last_name);
+  if (duplicate) throw {status: 400, message: 'Guest already exists'};
   const updated = {};
   first_name ? updated.first_name = first_name : null;
   last_name ? updated.last_name = last_name : null;
