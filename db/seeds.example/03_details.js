@@ -8,7 +8,7 @@ exports.seed = (knex, Promise) => {
           mother: 'Ginny',
           father: 'Harry',
           host: 'Hermione',
-          host_contact: '(512)432-4399',
+          host_contact: '(512) 432-4399',
           date: 'Thursday, February 14, 2019',
           time: '12:00 PM',
           location: '4123 Rosewater Rd, LONDON SW1A 2AA',
