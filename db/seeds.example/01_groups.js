@@ -5,18 +5,22 @@ exports.seed = (knex, Promise) => {
     .then(() => {
       return knex(TABLE_NAME).insert([
         {
+          id: 1,
           name: 'Potter',
           limit: 4
         },
         {
+          id: 2,
           name: 'Weasley',
           limit: 4
         },
         {
+          id: 3,
           name: 'Malfoy',
           limit: 5
         },
         {
+          id: 4,
           name: 'Longbottom',
           limit: 2
         }
