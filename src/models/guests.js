@@ -32,15 +32,14 @@ const create = async ({group_id, first_name, last_name, plus_one}) => {
     });
 };
 
-const update = async (id, {first_name, last_name, rsvp, accepted, plus_one}) => {
+const update = async (id, {first_name, last_name, accepted, plus_one}) => {
   const allGuests = await getAll();
   const duplicate = await allGuests.find(guest => guest.first_name === first_name && guest.last_name === last_name);
   if (duplicate) throw {status: 400, message: 'Guest already exists'};
   const updated = {};
   first_name ? updated.first_name = first_name : null;
   last_name ? updated.last_name = last_name : null;
-  rsvp || rsvp === false ? updated.rsvp = rsvp : updated.rsvp = true;
-  accepted || accepted === false ? updated.accepted = accepted : null;
+  accepted || accepted === false || accepted === null ? updated.accepted = accepted : null;
   plus_one || plus_one === false ? updated.plus_one = plus_one : null;
   return db('guests')
     .update(updated)
