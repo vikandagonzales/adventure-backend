@@ -41,7 +41,9 @@ const create = ({name, limit}) => {
     });
 };
 
-const update = (id, {name, limit}) => {
+const update = async (id, {name, limit}) => {
+  const group = await getOne(id);
+  if (group.guests.length > limit) throw {status: 400, message: 'Current guests exceed limit'};
   const updated = {};
   name ? updated.name = name : null;
   limit ? updated.limit = limit : null;
