@@ -33,9 +33,10 @@ const create = async ({group_id, first_name, last_name, plus_one}) => {
 };
 
 const update = async (id, {first_name, last_name, accepted, plus_one}) => {
+  const guest = await getOne(id);
   const allGuests = await getAll();
   const duplicate = await allGuests.find(guest => guest.first_name === first_name && guest.last_name === last_name);
-  if (duplicate) throw {status: 400, message: 'Guest already exists'};
+  if (duplicate && duplicate.id !== guest.id) throw {status: 400, message: 'Guest already exists'};
   const updated = {};
   first_name ? updated.first_name = first_name : null;
   last_name ? updated.last_name = last_name : null;
