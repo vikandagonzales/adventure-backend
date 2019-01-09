@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
+const history = require('connect-history-api-fallback');
 
 if (process.env.NODE_ENV !== 'production') require('dotenv').load();
 
@@ -9,6 +10,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // TOOLS
+app.use(history());
 app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
