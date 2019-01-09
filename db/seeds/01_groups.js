@@ -118,6 +118,16 @@ exports.seed = (knex, Promise) => {
           id: 23,
           name: 'Carr',
           limit: 1
+        },
+        {
+          id: 24,
+          name: 'Gomez',
+          limit: 2
+        },
+        {
+          id: 25,
+          name: 'Miller',
+          limit: 2
         }
       ]);
     })

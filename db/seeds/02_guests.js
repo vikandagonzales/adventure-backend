@@ -161,6 +161,16 @@ exports.seed = (knex, Promise) => {
           group_id: 23,
           first_name: 'Melinda',
           last_name: 'Carr'
+        },
+        {
+          group_id: 24,
+          first_name: 'James',
+          last_name: 'Gomez'
+        },
+        {
+          group_id: 25,
+          first_name: 'Chris',
+          last_name: 'Miller'
         }
       ]);
     })
