@@ -2,8 +2,12 @@
 
 Back-end for https://github.com/vikandagonzales/adventure.
 
-## API
+## API Documentation
 All back-end API routes have been documented on [Postman](https://documenter.getpostman.com/view/5952215/RznEMKFu).
+![Adventure Postman API Documentation](assets/api.png)
+
+## ERD
+![Adventure ERD](assets/erd.png)
 
 ## Installation
 
