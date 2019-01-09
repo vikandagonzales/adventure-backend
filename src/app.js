@@ -11,6 +11,7 @@ const port = process.env.PORT || 5000;
 
 // TOOLS
 app.use(history());
+app.use(express.static(__dirname));
 app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
