@@ -25,7 +25,7 @@ $ npm install
 
 - Make sure you have PostgreSQL installed.
 - Create a database on your local called `adventure-dev`.
-- In the repo, create a `seeds` folder within the `db` directory and add your own seed files, using the `seeds.example` folder as an example.
+- Create a `db/seeds` folder and add your own seed files, using the `db/seeds.example` folder as an example.
 ```
 $ npm run reboot
 ```
