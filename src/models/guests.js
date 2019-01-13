@@ -32,7 +32,7 @@ const create = async ({group_id, first_name, last_name, plus_one}) => {
     });
 };
 
-const update = async (id, {first_name, last_name, accepted, plus_one}) => {
+const update = async (id, {first_name, last_name, accepted, plus_one, admin}) => {
   const guest = await getOne(id);
   const allGuests = await getAll();
   const duplicate = await allGuests.find(guest => guest.first_name === first_name && guest.last_name === last_name);
@@ -42,6 +42,7 @@ const update = async (id, {first_name, last_name, accepted, plus_one}) => {
   last_name ? updated.last_name = last_name : null;
   accepted || accepted === false || accepted === null ? updated.accepted = accepted : null;
   plus_one || plus_one === false ? updated.plus_one = plus_one : null;
+  admin || admin === false ? updated.admin = admin : null;
   return db('guests')
     .update(updated)
     .where({id: id})
